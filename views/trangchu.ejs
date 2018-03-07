@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Demo Nodejs</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script>
+        var socket = io("http://localhost:8000");
+        //test jquery
+        // $(document).ready(function(){
+        //   alert(1)
+        // });
+        socket.on("dang_ki_thanh_cong",function(data){
+          var s = "<div class='motUser'>"+ data.username + "</div>";
+          $("#User_List").append(s);
+        });
+        socket.on("sv_gui_msg", function(data){
+          var hoten = "<span class='hoten'>" + data.Username + ": </span>";
+          var msg =  "<span class='msg'>" + data.msg + "</span>";
+          $("#Msg_List").append(hoten + msg + "<div class='block'></div>");
+        });
+        $(document).ready(function(){
+          $("#btnDangki").click(function(){
+            socket.emit("gui_username", $("#txtUser").val());
+          });
+          $("#btnEnter").click(function(){
+            socket.emit("user_gui_msg", $("#txtMsg").val());
+            $("#txtMsg").val("");
+          });
+        });
+
+    </script>
+       <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <h1>Demo Chat truc tuyen - Nodejs</h1>
+    <!-- Cho User nhap ten muon su dung va dang ki -->
+    <div id="wrapper">
+        <input type="text" id="txtUser" placeholder="Nhập tên User" />
+        <input type="button" id="btnDangki" value="Đăng kí" />
+        <div class="block"></div>
+        <!-- left dung de hien thi ten User Online -->
+        <div id="left">
+          <h4 id="title">User Đang Online</h4>
+          <div id="User_List">  </div>
+        </div>
+        <!-- Right dung de hien thi noi dung chat -->
+        <div id="right">
+          <div id="Msg_List"></div>
+          <div class="block"> </div>
+          <input type="text" id="txtMsg" placeholder="Chat...." />
+          <input type="button" id="btnEnter" value="Enter">
+        </div>
+    </div>
+  </body>
+</html>

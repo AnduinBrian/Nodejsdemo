@@ -1,0 +1,55 @@
+body{
+  background-color: #d7dfed;
+}
+#wrapper{
+  width: 900px;
+  margin: auto;
+}
+.block{
+  width: 100%;
+  clear: both,
+}
+#left,#right{
+  min-height: 500px;
+  margin-top: 10px;
+  float: left;
+}
+#left{
+  width: 30%;
+  background-color: #e5db1b;
+}
+#right{
+  width: 70%;
+  background-color: #f7dd74;
+}
+
+#txtMsg,#btnEnter{
+  float: left;
+}
+
+#txtMsg{
+  width: 70%;
+}
+
+#btnEnter{
+  width: 28%;
+  margin-left: 4px;
+}
+
+#title{
+  padding: 2px;
+  text-align: center;
+}
+h1{
+  text-align: center;
+}
+
+#User_List{
+  height: 80%;
+  width: 70%;
+}
+#Msg_List{
+  height: 475px ;
+  overflow: scroll;
+  clear: both;
+}
