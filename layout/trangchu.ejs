@@ -26,7 +26,6 @@
           });
           $("#btnEnter").click(function(){
             socket.emit("user_gui_msg", $("#txtMsg").val());
-            $("#txtMsg").val("");
           });
         });
 

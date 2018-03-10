@@ -1,14 +1,13 @@
 // khai bao cho sv lang nghe tren port 8000
 var express = require("express"); // khai bao express framework
 var app = express();
-app.use(express.static("public"));
+app.use(express.static("style"));
 app.set("view engine", "ejs");
-app.set("views", "./views"); // lay layout trong thu muc views
+app.set("views", "./layout"); // lay layout trong thu muc views
 var server = require("http").Server(app);
 var io = require("socket.io")(server);
 server.listen(8000) // port
 
-//khai bao mang UserOnline de hien thi len
 var UserOnline = [];
 
 //khi co nguoi ket noi, hien ben Server
